@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Gestisimal"},{"l":"Gestisimal.negocio"},{"l":"Gestisimal.presentacion"},{"l":"Gestisimal.util"}];updateSearchResults();
