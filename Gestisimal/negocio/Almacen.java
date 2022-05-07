@@ -44,17 +44,42 @@ import com.google.gson.reflect.TypeToken;
 
 public class Almacen {
 
+  /**
+   * Lista de artículos en almacen	
+   */
   private List<Articulo> almacen = new ArrayList<>();
 
+  /**
+   * Añade artículos al almacén
+   * 
+   * @param nombre           Nombre del nuevo Artículo.
+   * @param marca            Marca del nuevo Artículo.
+   * @param precioDeCompra   Precio de Compra del nuevo Artículo.
+   * @param precioDeVenta    Precio de Venta del nuevo Artículo.
+   * @param numeroDeUnidades Número de Unidades del nuevo Artículo.
+   * @param stockDeSeguridad Stock de seguridad del nuevo Artículo.
+   * @param stockMaximo      Stock Máximo del nuevo Artículo.
+   * 
+   * @throws AlmacenNombreMarcaException Salta si se intenta añadir un artículo con el mismo nombre y marca que uno
+   * registrado en el almacén.
+   */
   public void add(String nombre, String marca, double precioDeCompra, double precioDeVenta,
       int numeroDeUnidades, int stockDeSeguridad, int stockMaximo)
       throws AlmacenNombreMarcaException {
-    lanzaExcepcionSiNombreYMarca2ProductosSonIguales(nombre, marca);
+    checkeaSiNombreYMarca2ProductosSonIguales(nombre, marca);
     almacen.add(new Articulo(nombre, marca, precioDeCompra, precioDeVenta, numeroDeUnidades,
         stockDeSeguridad, stockMaximo));
   }
 
-  private void lanzaExcepcionSiNombreYMarca2ProductosSonIguales(String nombre, String marca)
+  /**
+   * Verifica si 2 artículos tienen el mismo nombre y marca
+   * 
+   * @param nombre           Nombre del nuevo Artículo.
+   * @param marca            Marca del nuevo Artículo.
+   * @throws AlmacenNombreMarcaException 	Salta sí el artículo que se intenta añadir coincide su nombre y marca
+   * con uno que haya en el almacén.
+   */
+  private void checkeaSiNombreYMarca2ProductosSonIguales(String nombre, String marca)
       throws AlmacenNombreMarcaException {
     for (Articulo art : almacen) {
       if (nombre.equals(art.getNombre()) && marca.equals(art.getMarca())) {
@@ -66,6 +91,12 @@ public class Almacen {
   // podemos usar un metodo contains o implementar el método equals en Articulo.
   // la excepcion debe ir al principio
 
+  /**
+   * Elimina un artículo del almacén.
+   * 
+   * @param codigo Código del artículo a eliminar.
+   * @throws AlmacenCodigoNoExisteException Salta si el código no está en almacén.
+   */
   public void delete(int codigo) throws AlmacenCodigoNoExisteException {
     // remove if más rápido articles removeIf(art -> art.getCode() == code);
     if (!containsCod(codigo)) {
@@ -73,8 +104,13 @@ public class Almacen {
     }
     almacen.removeIf(art -> art.getCodigo() == codigo);
   }
-  // TODO poner nombre apropiado hecho
 
+  /**
+   * Verifica si el artículo contiene el código pasado.
+   * 
+   * @param codigo  Código a verificar.
+   * @return		Devuelve true o false.
+   */
   private boolean containsCod(int codigo) {
     for (Articulo art : almacen) {
       if (art.getCodigo() == codigo) {
@@ -84,6 +120,13 @@ public class Almacen {
     return false;
   }
 
+  /**
+   * Incrementa unidades del artículo.
+   * 
+   * @param codigo  	Código del artículo.
+   * @param unidades	Nº de unidades.
+   * @throws AlmacenCodigoNoExisteException Sí el código no existe.
+   */
   // incrementar unidades
   public void addUnidades(int codigo, int unidades) throws AlmacenCodigoNoExisteException {
     for (Articulo art : almacen) {
@@ -95,6 +138,15 @@ public class Almacen {
     throw new AlmacenCodigoNoExisteException("El código " + codigo + " no existe en el almacén");
   }
 
+  /**
+   * Decrementa unidades del artículo.
+   * 
+   * @param codigo		Código del artículo.
+   * @param unidades	Nº de unidades.
+   * 
+   * @throws AlmacenCodigoNoExisteException	Sí el código no existe
+   * @throws ArticuloStockException			Sí no hay stock.
+   */
   // decrementar unidades
   public void removeUnidades(int codigo, int unidades)
       throws AlmacenCodigoNoExisteException, ArticuloStockException {
@@ -106,8 +158,22 @@ public class Almacen {
     }
     throw new AlmacenCodigoNoExisteException("El código " + codigo + " no existe en el almacén");
   }
-  // TODO corregir igual que añadir hecho
 
+  /**
+   * Modifica el artículo por su código.
+   * 
+   * @param codigo			 Código del artículo.
+   * @param nombre           Nombre del nuevo Artículo.
+   * @param marca            Marca del nuevo Artículo.
+   * @param precioDeCompra   Precio de Compra del nuevo Artículo.
+   * @param precioDeVenta    Precio de Venta del nuevo Artículo.
+   * @param numeroDeUnidades Número de Unidades del nuevo Artículo.
+   * @param stockDeSeguridad Stock de seguridad del nuevo Artículo.
+   * @param stockMaximo      Stock Máximo del nuevo Artículo.
+   * 
+   * @throws AlmacenCodigoNoExisteException No existe código en el almacén.
+   * @throws AlmacenNombreMarcaException	EL nombre y la marca se repiten.
+   */
   // modificar articulo
   public void modificarArticulo(int codigo, String nombre, String marca, double precioDeCompra,
       double precioDeVenta, int numeroDeUnidades, int stockMaximo, int stockDeSeguridad)
@@ -127,6 +193,11 @@ public class Almacen {
   }
 
 
+  /**
+   * Exporta nuestros artículos a fichero .json.
+   * 
+   * @param fichero		Recibe un fichero.
+   */
   // Exportar a formato json clase almacén
   public void exportarJson(String fichero) {
     try (var file = Files.newBufferedWriter(Paths.get(fichero), Charset.defaultCharset(),
@@ -148,7 +219,10 @@ public class Almacen {
       e.printStackTrace();
     }
   }
-
+  
+  /**
+   * Importa en un nuevo arrayList nuestros artículos guardados desde el fichero .json.
+   */
   // importar en formato json clase almacén
   public void importarJson() {
     try {
@@ -175,6 +249,11 @@ public class Almacen {
 
   }
 
+  /**
+   * Exporta a fichero .xml los artículos.
+   * 
+   * @param fichero		Recibe un fichero xml.
+   */
   // exportar en xml
   public void exportarXML(String fichero) {
 
@@ -260,6 +339,9 @@ public class Almacen {
     }
   }
 
+  /**
+   * Importa a un nuevo arrayList desde un fichero xml los artículos.
+   */
   // importar en xml
   public void importarXML() {
 
@@ -303,7 +385,6 @@ public class Almacen {
             Integer.parseInt(articulo.getElementsByTagName("StockMáximo").item(0).getTextContent());
 
         // Añadimos a la lista
-        
         almacen.add(new Articulo(code, nombre, marca, precioDeCompra, precioDeVenta, units,
             stockMinimo, stockMaximo));
       }
@@ -322,6 +403,9 @@ public class Almacen {
     }
   }
 
+  /**
+   * Devuelve una representación en cadena del objeto.
+   */
   @Override
   public String toString() {
     return "Almacen [almacen=" + almacen + "]";

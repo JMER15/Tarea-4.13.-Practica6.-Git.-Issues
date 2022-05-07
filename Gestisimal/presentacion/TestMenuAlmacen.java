@@ -9,21 +9,49 @@ import Gestisimal.negocio.ArticuloStockException;
 import static Gestisimal.util.Util.*;
 
 /**
- * Probamos la clase Menu.
+ * Queremos modelar un test para nuestro almacén de ariculos en Java. Nos limitaremos a las
+ * siguientes opciones:
+ * <ol>
+ * <li>1. Añadir Artículo.</li>
+ * <li>2. Borrar Artículo.</li>
+ * <li>3. Añadir unidades al Artículo.</li>
+ * <li>4. Decrementar unidades al Artículo.</li>
+ * <li>5. Impresión ALmacén.</li>
+ * <li>6. Modificar Artículo.</li>
+ * <li>7. Exportar Artículo a JSON.</li>
+ * <li>8. Importar JSON.</li>
+ * <li>9. Exportar Artículo a XML.</li>
+ * <li>10. Importar XML.</li>
+ * <li>11. Finalizar.</li>
+ * </ol>
  * 
  * @author José Miguel
- *
+ * 
  */
 
 public class TestMenuAlmacen {
 
+	/**
+	 * Constante
+	 */
   private static final int TERMINAR = 11;
 
+  /**
+   * Objeto creado de la clase Almacen
+   */
   private static Almacen almacen1 = new Almacen();
  
+ 
+  /**
+   * 
+   * @param args  Devuelve los argumentos del main.
+   */
   public static void main(String[] args) {
 
     // creamos el método menú
+	/**
+	 * Inicio del programa.
+	 */
     Menu menu = crearMenu();
 
     int opcion;
@@ -77,12 +105,20 @@ public class TestMenuAlmacen {
     System.out.println("hasta luego :))))");
   }
 
+  /**
+   * Menú para nuestra aplicación.
+   * 
+   * @return menu	Devuelve un objeto menú.
+   */
   public static Menu crearMenu() {
     return new Menu("Añadir Artículo.", "Borrar artículo.", "Incrementar unidades almacén.",
         "Decrementar unidades almacén", "Impresión del almacén", "Modificar Artículo",
         "Exportar A JSON", "Importar JSON", "Exportar A XML", "Importar XML", "Finalizar");
   }
 
+  /**
+   * Pide datos al usuario
+   */
   private static void pedirDatos() {
     try {
 
@@ -100,16 +136,25 @@ public class TestMenuAlmacen {
 
   }
   
+  /**
+   * Pide un fichero Json.
+   */
   private static void pedirFicheroJson() {
     String fichero = readStr("Dime el nombre del fichero json");
     almacen1.exportarJson(fichero);
   }
   
+  /**
+   * Pide un fichero XML.
+   */
   private static void pedirFicheroXML() {
     String fichero = readStr("Dime el nombre del fichero xml");
     almacen1.exportarXML(fichero);
   }
 
+  /**
+   * Borra Artículo pidiendo el código
+   */
   @SuppressWarnings("resource")
   private static void borrarArticulo() {
     try {
@@ -128,6 +173,10 @@ public class TestMenuAlmacen {
 
   }
 
+  /**
+   * Aumenta Unidades del almacén. Pide las Unidades.
+   * 
+   */
   private static void aumentoUnidades() {
     try {
       
@@ -145,6 +194,9 @@ public class TestMenuAlmacen {
 
   }
 
+  /**
+   * Decrementa unidades del almacén. Pide las unidades.
+   */
   private static void decrementoUnidades() {
 
     try {
@@ -164,6 +216,9 @@ public class TestMenuAlmacen {
 
   }
 
+  /**
+   * Modifica Artículo. Pide el código para modificar.
+   */
   private static void modificarArticulo() {
 
     try {

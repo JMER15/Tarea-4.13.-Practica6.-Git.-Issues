@@ -1,22 +1,24 @@
 package Gestisimal.negocio;
 
+/**
+ * Lanzada para indicar si el valor de un atributo es incorrecto.
+ * 
+ * @author José Miguel Escribano Ruiz
+ *
+ */
 public class ArticuloIllegalErrorArgumentException extends IllegalArgumentException {
 
+  /**
+   * Serial para la excepción.
+   */
   private static final long serialVersionUID = 1L;
 
-  public ArticuloIllegalErrorArgumentException() {
+  /**
+   * Construye una excepción ArticuloIllegalErrorArgumentException con el mensaje detallado.
+   * 
+   * @param message mensaje detallado.
+   */
+  public ArticuloIllegalErrorArgumentException(String message) {
+    super(message);
   }
-
-  public ArticuloIllegalErrorArgumentException(String s) {
-    super(s);
-  }
-
-  public ArticuloIllegalErrorArgumentException(Throwable cause) {
-    super(cause);
-  }
-
-  public ArticuloIllegalErrorArgumentException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
 }
