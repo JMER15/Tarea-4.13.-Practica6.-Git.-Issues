@@ -12,17 +12,17 @@ import static Gestisimal.util.Util.*;
  * Queremos modelar un test para nuestro almacén de ariculos en Java. Nos limitaremos a las
  * siguientes opciones:
  * <ol>
- * <li>1. Añadir Artículo.</li>
- * <li>2. Borrar Artículo.</li>
- * <li>3. Añadir unidades al Artículo.</li>
- * <li>4. Decrementar unidades al Artículo.</li>
- * <li>5. Impresión ALmacén.</li>
- * <li>6. Modificar Artículo.</li>
- * <li>7. Exportar Artículo a JSON.</li>
- * <li>8. Importar JSON.</li>
- * <li>9. Exportar Artículo a XML.</li>
- * <li>10. Importar XML.</li>
- * <li>11. Finalizar.</li>
+ * <li>Añadir Artículo.</li>
+ * <li>Borrar Artículo.</li>
+ * <li>Añadir unidades al Artículo.</li>
+ * <li>Decrementar unidades al Artículo.</li>
+ * <li>Impresión ALmacén.</li>
+ * <li>Modificar Artículo.</li>
+ * <li>Exportar Artículo a JSON.</li>
+ * <li>Importar JSON.</li>
+ * <li>Exportar Artículo a XML.</li>
+ * <li>Importar XML.</li>
+ * <li>Finalizar.</li>
  * </ol>
  * 
  * @author José Miguel
@@ -43,12 +43,12 @@ public class TestMenuAlmacen {
  
  
   /**
+   * Main del programa.
    * 
    * @param args  Devuelve los argumentos del main.
    */
   public static void main(String[] args) {
 
-    // creamos el método menú
 	/**
 	 * Inicio del programa.
 	 */
