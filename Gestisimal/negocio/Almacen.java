@@ -30,13 +30,20 @@ import com.google.gson.reflect.TypeToken;
 
 
 /**
- * Clase Almacén que realice el alta, baja, modificación, entrada de mercancía (incrementa
- * unidades), salida de mercancía (decrementa unidades). El estado será un ArrayList de artículos
- * (pero la clase no será un ArrayList) Su comportamiento será: añadir artículos (no puede haber dos
- * artículos con el mismo nombre y marca), eliminar artículos, incrementar las existencias de un
- * artículo (se delega en la clase Artículo), decrementar las existencias de un artículo (nunca por
- * debajo de cero, se delega en la clase Artículo), devolver un artículo (para mostrarlo). Para
- * listar el almacén podría devolverse una cadena con todos los artículos del almacén (toString).
+ * Clase Almacén que realiza el alta, baja, modificación, entrada de mercancía (incrementa unidades)
+ * y salida de mercancía (decrementa unidades).
+ * <p>
+ * El estado será un ArrayList de objetos de clase Artículo.
+ * <p>
+ * Su comportamiento será:
+ * <ol>
+ * <li>Añadir artículos (no puede haber dos artículos con el mismo nombre y marca).</li>
+ * <li>Eliminar artículos (por código o nombre y marca).</li>
+ * <li>Incrementar las existencias de un artículo (por código o nombre y marca).</li>
+ * <li>Decrementar las existencias de un artículo (nunca por debajo de cero).</li>
+ * <li>Devolver un artículo (para mostrarlo).</li>
+ * <li>Listar el almacén.</li>
+ * </ol>
  * 
  * @author josemi
  *
