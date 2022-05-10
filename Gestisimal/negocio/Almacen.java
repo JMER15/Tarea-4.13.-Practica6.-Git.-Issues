@@ -35,7 +35,7 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * El estado será un ArrayList de objetos de clase Artículo.
  * <p>
- * Su comportamiento será:
+ * Su comportamiento de almacén será:
  * <ol>
  * <li>Añadir artículos (no puede haber dos artículos con el mismo nombre y marca).</li>
  * <li>Eliminar artículos (por código o nombre y marca).</li>
