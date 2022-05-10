@@ -3,14 +3,16 @@ package Gestisimal.negocio;
 /**
  * Clase Artículo que representa a los artículos del almacén.
  * 
- * Su estado será: código, nombre, marca, precio de compra, precio de venta,
- * número de unidades (nunca negativas), stock de seguridad y stock máximo.
+ * <p>Su estado será: código, nombre, marca, precio de compra, precio de venta,
+ * número de unidades (nunca negativas), stock de seguridad y stock máximo.</p>
  * 
- * Como comportamiento: Consideramos que el código va a generarse de forma
+ * <p>Como comportamiento: Consideramos que el código va a generarse de forma
  * automática en el constructor, así no puede haber dos artículos con el mismo
- * código. Esto implica que no puede modificarse el código de un artículo, sí el
+ * código.</P> 
+ * 
+ * <p>Esto implica que no puede modificarse el código de un artículo, sí el
  * resto de las propiedades. Podremos mostrar el artículo, por lo que necesito
- * una representación del artículo en forma de cadena (toString).
+ * una representación del artículo en forma de cadena (toString).</P>
  * 
  * @author josemi
  * 
@@ -25,13 +27,44 @@ public class Articulo {
 	 */
 	private static int ultimoCodigo = 0;
 
+	/**
+	 * Código del objeto.
+	 */
 	private int codigo;
+
+	/**
+	 * Nombre del artículo.
+	 */
 	private String nombre;
+
+	/**
+	 * Marca del artículo.
+	 */
 	private String marca;
+
+	/**
+	 * Precio de compra del artículo.
+	 */
 	private double precioDeCompra;
+
+	/**
+	 * Precio de Venta del artículo
+	 */
 	private double precioDeVenta;
+
+	/**
+	 * Número de unidades del artículo.
+	 */
 	private int numeroDeUnidades;
+
+	/**
+	 * Stock Mínimo del artículo.
+	 */
 	private int stockDeSeguridad;
+
+	/**
+	 * Stock Máximo del artículo.
+	 */
 	private int stockMaximo;
 
 	/**
