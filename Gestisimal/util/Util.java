@@ -94,7 +94,8 @@ import java.util.Scanner;
     }
     
     /**
-     * Confirmación
+     * Recibe una cadena, Si la cadena es S o N devolverá Verdadero, sino es estará pidiendo al usuario infinitamente 
+     * uno de estas 2 cadenas hasta que las introduzca.
      * 
      * @param prompt 	Recibe un string.
      * @return resp		Devuelve un boolean (true or false).
@@ -112,9 +113,10 @@ import java.util.Scanner;
     }
     
     /**
-     * Confirma S/N
+     * Solicita una S o N mayúsculas
      * 
-     * @return boolean	Devuelve un boolean (true or false).	
+     * @return boolean	Devuelve verdadero si es una S o N y falso en caso de que sea otra cosa, que no coincida 
+     * con estas 2 últimas.	
      */
     public static boolean confirm() {
       return confirm("¿Está seguro/a? (S/N)");
