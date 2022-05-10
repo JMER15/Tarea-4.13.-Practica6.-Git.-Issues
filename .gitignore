@@ -1,0 +1,11 @@
+/.metadata/
+/.recommenders/
+.project
+.classpath
+.pydevproject
+.idea
+.settings
+.gitignore
+__pycache__
+*.class
+bin/
